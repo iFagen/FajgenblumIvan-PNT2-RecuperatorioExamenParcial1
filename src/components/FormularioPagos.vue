@@ -194,17 +194,15 @@
         },
 
         colorSaldo(id){
-          let pago = this.calcularSaldo(id)
+          let pago = this.pagos.find(p => p.id == id)
+          pago.saldo = pago.montoAPagar - pago.pagoRealizado 
+
           let colorSaldo
           if(pago.saldo == 0 ) colorSaldo = 'green'
           if(pago.saldo < 0 ) colorSaldo = 'red'
           if(pago.saldo > 0 ) colorSaldo = 'blue'
 
           return colorSaldo
-        },
-        calcularSaldo(id){
-          let pago = this.pagos.find(p => p.id == id)
-          pago.saldo = pago.montoAPagar - pago.pagoRealizado 
         }
     },
     computed: {
